@@ -6,9 +6,8 @@ import { Usuario } from '../classes/usuario';
   providedIn: 'root'
 })
 export class WebsocketService {
-  
   public socketStatus=false;
-  public usuario?: Usuario; //el signo de ? = puede ser null 
+  public usuario?: Usuario;
 
   constructor(
     private socket: Socket
@@ -25,7 +24,7 @@ export class WebsocketService {
     this.socket.on('disconnect', () => {
       console.log('Desconectado del servidor');
       this.socketStatus = false;
-    });
+    })
   }
 
 
@@ -39,11 +38,19 @@ export class WebsocketService {
   }
 
   loginWS(nombre: String){
-    console.log('configurado:', nombre)
-    this.socket.emit('configurar-usuario', {nombre}, (resp: Response) =>{
+
+    return new Promise ( ( resolve, reject) => {
+          //console.log('Configurando :', nombre);
+     this.emit('configurar-usuario',{nombre}, (resp:Response) =>{
+      //console.log(resp);
+      resolve(Promise)
+     });
+    }
+     /*this.socket.emit('configurar-usuario', {nombre}, (resp: Response) =>
+     {
       console.log(resp);
-    });
-  }
+     });*/
+  )}
 
 }
 
