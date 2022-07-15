@@ -6,12 +6,15 @@ import { Usuario } from '../classes/usuario';
   providedIn: 'root'
 })
 export class WebsocketService {
+
   public socketStatus=false;
-  public usuario?: Usuario;
+  //propiedad != para que sea null 
+  public usuario!: Usuario;
 
   constructor(
     private socket: Socket
   ) {
+    this.cargarStorage();
     this.checkStatus();
   }
 
@@ -37,13 +40,19 @@ export class WebsocketService {
     return this.socket.fromEvent( evento );
   }
 
-  loginWS(nombre: String){
+  loginWS(nombre: String, color: String){
+  //loginWS(nombre: String, color: String){
 
-    return new Promise ( ( resolve, reject) => {
+    return new Promise<void> ( ( resolve, reject) => {
           //console.log('Configurando :', nombre);
      this.emit('configurar-usuario',{nombre}, (resp:Response) =>{
       //console.log(resp);
-      resolve(Promise)
+
+        //this.usuario = new Usuario(nombre);
+        this.usuario = new Usuario(nombre, color);
+        this.guardarStorage();
+        resolve()
+
      });
     }
      /*this.socket.emit('configurar-usuario', {nombre}, (resp: Response) =>
@@ -51,6 +60,18 @@ export class WebsocketService {
       console.log(resp);
      });*/
   )}
+  getUsuario () {
+    return this.usuario;
+  }
 
+  guardarStorage(){
+    localStorage.setItem("usuario", JSON.stringify(this.usuario));
+  }
+
+  cargarStorage(){
+    if ( localStorage.getItem('usuario')) {
+      this.usuario = JSON.parse(localStorage.getItem('usuario')!);
+    }
+  }
 }
 
