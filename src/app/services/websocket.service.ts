@@ -40,7 +40,7 @@ export class WebsocketService {
     return this.socket.fromEvent( evento );
   }
 
-  loginWS(nombre: String, color: String){
+  loginWS(nombre: String){
   //loginWS(nombre: String, color: String){
 
     return new Promise<void> ( ( resolve, reject) => {
@@ -48,8 +48,8 @@ export class WebsocketService {
      this.emit('configurar-usuario',{nombre}, (resp:Response) =>{
       //console.log(resp);
 
+        this.usuario = new Usuario(nombre);
         //this.usuario = new Usuario(nombre);
-        this.usuario = new Usuario(nombre, color);
         this.guardarStorage();
         resolve()
 
@@ -71,6 +71,7 @@ export class WebsocketService {
   cargarStorage(){
     if ( localStorage.getItem('usuario')) {
       this.usuario = JSON.parse(localStorage.getItem('usuario')!);
+      this.loginWS(this.usuario.nombre);
     }
   }
 }

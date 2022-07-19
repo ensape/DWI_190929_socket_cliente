@@ -1,9 +1,9 @@
 export class Usuario{
     public nombre: String;
-    public color: String;
+    
 
-    constructor(nombre: String, color: String){
+    constructor(nombre: String){
         this.nombre= nombre;
-        this.color = color;
+     
     }
 }

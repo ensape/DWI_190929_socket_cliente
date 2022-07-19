@@ -17,10 +17,13 @@ body{
       border: 2px solid gray;
       border-radius: 5px;
       overflow-y: scroll;
+      /* background: linear-gradient(135deg,#2b00c6,#be0d00); */
   }
 
 .chat-input{
     margin-top: 10px;
+    display: grid;
+    /* background: linear-gradient(135deg,#2b00c6,#be0d00); */
 }
 
 .margin-top-10{

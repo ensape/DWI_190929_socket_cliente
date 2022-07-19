@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   nombre='';
   color= 'navy';
+  
   constructor(
     public wsService: WebsocketService,
     private router: Router
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ingresar(){
     //this.wsService.loginWS(this.color);
-    this.wsService.loginWS(this.nombre, this.color)
+    this.wsService.loginWS(this.nombre)
     .then (() =>{
         this.router.navigateByUrl('/mensajes');
     })
