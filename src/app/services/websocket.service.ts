@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Socket} from 'ngx-socket-io';
 import { Usuario } from '../classes/usuario';
@@ -22,7 +23,8 @@ export class WebsocketService {
     this.socket.on('connect', () => {
       console.log('conectado al servidor');
       this.socketStatus = true;
-    })
+      this.cargarStorage()
+    });
 
     this.socket.on('disconnect', () => {
       console.log('Desconectado del servidor');
