@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Socket} from 'ngx-socket-io';
 import { Usuario } from '../classes/usuario';
 
@@ -13,7 +14,9 @@ export class WebsocketService {
   public usuario!: Usuario;
 
   constructor(
-    private socket: Socket
+    private socket: Socket,
+    //importar el private
+    private router: Router
   ) {
     this.cargarStorage();
     this.checkStatus();
@@ -62,6 +65,20 @@ export class WebsocketService {
       console.log(resp);
      });*/
   )}
+  
+  //creacion del boton de logout 03/08/2022
+  logoutWS(){
+    this.usuario!= null;
+    localStorage.removeItem('usuario');
+      
+      const payload = {
+        nombre: 'sin-nombre'
+      };
+
+    this.emit('configurar-usuario', payload, () => {}); //() => {} esto es un callback
+    this.router.navigateByUrl('');
+  }
+
   getUsuario () {
     return this.usuario;
   }
