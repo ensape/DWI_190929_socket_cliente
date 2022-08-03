@@ -14,11 +14,13 @@ export class ListaUsuariosComponent implements OnInit {
   constructor(
     public chatService: ChatService
   ){}
-
+  
   ngOnInit(){
   
     this.usuariosActivosObs = this.chatService.getUsuariosActivos();
-  
-  }
+    //Emitir el obtenerUsuarios  
 
+    this.chatService.emitirUsuariosActivos();    
+  }
 }
+

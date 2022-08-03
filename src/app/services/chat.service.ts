@@ -33,4 +33,8 @@ export class ChatService {
   getUsuariosActivos(){
     return this.wsService.listen('usuarios-activos')
   } //CrEACION DE LISTA DE USUARIOS 
+
+  emitirUsuariosActivos(){
+    this.wsService.listen('obtener-usuarios');
+  }
 }
