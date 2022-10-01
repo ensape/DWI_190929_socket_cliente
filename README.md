@@ -1,10 +1,8 @@
 # Basico
-Aplicación web Auto Lavado con el framework Laravel utilizando 
-bootstrap, utilizando la aplicación PhpMyAdmin para administrar la 
-base de datos para que la aplicación nos permitiera insertar datos 
-desde el servidor local, en la aplicación, el administrador observara los 
-datos de los empleados, usuarios, vehículos, factura de costo de un 
-Auto lavado.
+ Aplicación web Chats con el framework Angular utilizando bootstrap,
+llevando acabo el manejo de chat entre usuarios, mostrando una lista 
+de usuarios activos en tiempo real utilizando Node.js, Sockets para 
+mostrar cambios continuos en el servidor local y Servicios REST
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
 
